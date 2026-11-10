@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery & Category Filter</title>
+  <title>Travel Destinations Gallery</title>
   <style>
     /* Reset & Base Styles */
     * {
@@ -14,8 +14,8 @@
     }
 
     body {
-      background-color: #f4f7f6;
-      color: #333;
+      background-color: #0f172a;
+      color: #f8fafc;
       line-height: 1.6;
       padding: 20px;
     }
@@ -28,29 +28,31 @@
 
     header h1 {
       font-size: 2.5rem;
-      color: #2c3e50;
+      color: #06b6d4;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     header p {
       font-size: 1.1rem;
-      color: #7f8c8d;
+      color: #94a3b8;
     }
 
     /* Filter Buttons */
     .filter-container {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 30px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 10px 20px;
-      border: 2px solid #3498db;
-      background-color: white;
-      color: #3498db;
+      padding: 10px 24px;
+      border: 2px solid #06b6d4;
+      background-color: transparent;
+      color: #06b6d4;
       font-size: 1rem;
       font-weight: bold;
       border-radius: 25px;
@@ -60,10 +62,10 @@
 
     /* CSS Hover Effect for Buttons */
     .btn:hover, .btn.active {
-      background-color: #3498db;
-      color: white;
+      background-color: #06b6d4;
+      color: #0f172a;
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
     }
 
     /* 2. Gallery & CSS Grid */
@@ -77,23 +79,26 @@
 
     /* Card Item */
     .card {
-      background: white;
+      background: #1e293b;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      border: 1px solid #334155;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     /* CSS Hover Effect for Cards */
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 12px 25px rgba(6, 182, 212, 0.25);
+      border-color: #06b6d4;
     }
 
     .card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
+      display: block;
     }
 
     .card-body {
@@ -104,23 +109,29 @@
       display: inline-block;
       font-size: 0.8rem;
       font-weight: bold;
-      color: #3498db;
+      padding: 3px 10px;
+      border-radius: 12px;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
+    /* Tag Colors per Category */
+    .mountain .card-tag { background-color: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .beach .card-tag { background-color: rgba(6, 182, 212, 0.2); color: #06b6d4; }
+    .culture .card-tag { background-color: rgba(249, 115, 22, 0.2); color: #f97316; }
+
     .card-title {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: #2c3e50;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: #f1f5f9;
     }
 
     .card-text {
-      font-size: 0.95rem;
-      color: #666;
+      font-size: 0.9rem;
+      color: #94a3b8;
     }
 
-    /* JS Filter Animation Class */
+    /* JS Filter Hide Class */
     .hide {
       display: none;
     }
@@ -131,7 +142,7 @@
         font-size: 1.8rem;
       }
       .btn {
-        padding: 8px 15px;
+        padding: 8px 16px;
         font-size: 0.9rem;
       }
     }
@@ -141,78 +152,78 @@
 
   <!-- 1. Header Section -->
   <header>
-    <h1>คลังภาพและผลงาน (Gallery)</h1>
-    <p>เลือกคลิกหมวดหมู่ด้านล่างเพื่อกรองเนื้อหาที่ต้องการดู</p>
+    <h1>EXPLORE THE WORLD</h1>
+    <p>รวมสถานที่ท่องเที่ยวน่าไป ออกเดินทางสัมผัสธรรมชาติและวัฒนธรรม</p>
   </header>
 
   <!-- Filter Buttons (3 หมวดหมู่ + ปุ่ม "ทั้งหมด") -->
   <div class="filter-container">
-    <button class="btn active" onclick="filterGallery('all')">ทั้งหมด</button>
-    <button class="btn" onclick="filterGallery('nature')">ธรรมชาติ</button>
-    <button class="btn" onclick="filterGallery('tech')">เทคโนโลยี</button>
-    <button class="btn" onclick="filterGallery('food')">อาหาร</button>
+    <button class="btn active" onclick="filterGallery('all', event)">ทั้งหมด</button>
+    <button class="btn" onclick="filterGallery('mountain', event)">ภูเขา & ธรรมชาติ</button>
+    <button class="btn" onclick="filterGallery('beach', event)">ทะเล & เกาะ</button>
+    <button class="btn" onclick="filterGallery('culture', event)">วัฒนธรรม & เมือง</button>
   </div>
 
   <!-- Gallery Section (6 การ์ดข้อมูล) -->
   <main class="gallery">
 
-    <!-- Card 1 -->
-    <div class="card nature">
-      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="หมอกยามเช้า">
+    <!-- Card 1: Mountain -->
+    <div class="card mountain">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="เทือกเขาฟูจิ">
       <div class="card-body">
-        <span class="card-tag">ธรรมชาติ</span>
-        <h3 class="card-title">ทะเลหมอกบนยอดเขา</h3>
-        <p class="card-text">บรรยากาศความงดงามของธรรมชาติยามเช้าในวันที่อากาศสดใส</p>
+        <span class="card-tag">ภูเขา & ธรรมชาติ</span>
+        <h3 class="card-title">ภูเขาไฟฟูจิ (Japan)</h3>
+        <p class="card-text">สัญลักษณ์แห่งประเทศญี่ปุ่น ชมวิวภูเขาหิมะอันงดงามท่ามกลางธรรมชาติรอบ湖</p>
       </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card tech">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="เมนบอร์ด">
+    <!-- Card 2: Beach -->
+    <div class="card beach">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="ทะเลมัลดีฟส์">
       <div class="card-body">
-        <span class="card-tag">เทคโนโลยี</span>
-        <h3 class="card-title">ฮาร์ดแวร์คอมพิวเตอร์</h3>
-        <p class="card-text">ชิปประมวลผลและแผงวงจรหลักที่เป็นหัวใจสำคัญของอุปกรณ์ยุคใหม่</p>
+        <span class="card-tag">ทะเล & เกาะ</span>
+        <h3 class="card-title">หมู่เกาะมัลดีฟส์ (Maldives)</h3>
+        <p class="card-text">สวรรค์ของคนรักทะเล น้ำใสเห็นตัวปลาพร้อมที่พักกลางน้ำสุดหรูหรา</p>
       </div>
     </div>
 
-    <!-- Card 3 -->
-    <div class="card food">
-      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt="พิซซ่า">
+    <!-- Card 3: Culture -->
+    <div class="card culture">
+      <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=600&q=80" alt="วัดพระแก้ว">
       <div class="card-body">
-        <span class="card-tag">อาหาร</span>
-        <h3 class="card-title">พิซซ่าเตาถ่านสไตล์อิตาเลียน</h3>
-        <p class="card-text">แป้งบางกรอบพร้อมชีสเยิ้มๆ อบสดใหม่จากเตา</p>
+        <span class="card-tag">วัฒนธรรม & เมือง</span>
+        <h3 class="card-title">วัดพระแก้ว (Thailand)</h3>
+        <p class="card-text">สัมผัสความงดงามของสถาปัตยกรรมไทยโบราณและโบราณสถานอันทรงคุณค่า</p>
       </div>
     </div>
 
-    <!-- Card 4 -->
-    <div class="card nature">
-      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="ป่าไม้">
+    <!-- Card 4: Mountain -->
+    <div class="card mountain">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="สวิสอัลป์">
       <div class="card-body">
-        <span class="card-tag">ธรรมชาติ</span>
-        <h3 class="card-title">ผืนป่าอันสมบูรณ์</h3>
-        <p class="card-text">แสงแดดที่ส่องผ่านแมกไม้ในป่าอุดมสมบูรณ์ ให้ความรู้สึกสงบ</p>
+        <span class="card-tag">ภูเขา & ธรรมชาติ</span>
+        <h3 class="card-title">เทือกเขาอัลป์ (Switzerland)</h3>
+        <p class="card-text">ดื่มด่ำกับทุ่งหญ้าเขียวขจีและยอดเขาหิมะในสวิตเซอร์แลนด์ ดินแดนแห่งเทพนิยาย</p>
       </div>
     </div>
 
-    <!-- Card 5 -->
-    <div class="card tech">
-      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="การเขียนโค้ด">
+    <!-- Card 5: Beach -->
+    <div class="card beach">
+      <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="เกาะบาหลี">
       <div class="card-body">
-        <span class="card-tag">เทคโนโลยี</span>
-        <h3 class="card-title">การพัฒนาซอฟต์แวร์</h3>
-        <p class="card-text">เบื้องหลังการสร้างสรรค์แอปพลิเคชันและเว็บไซต์ระดับโลก</p>
+        <span class="card-tag">ทะเล & เกาะ</span>
+        <h3 class="card-title">เกาะบาหลี (Indonesia)</h3>
+        <p class="card-text">เสน่ห์ชายหาดเขตร้อนผสมผสานวิถีชีวิตและวัฒนธรรมท้องถิ่นอันมีเอกลักษณ์</p>
       </div>
     </div>
 
-    <!-- Card 6 -->
-    <div class="card food">
-      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="ราเมง">
+    <!-- Card 6: Culture -->
+    <div class="card culture">
+      <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80" alt="เกียวโต">
       <div class="card-body">
-        <span class="card-tag">อาหาร</span>
-        <h3 class="card-title">ราเมงซุปกระดูกหมูเข้มข้น</h3>
-        <p class="card-text">เส้นเหนียวนุ่มกับน้ำซุปรสชาติกลมกล่อมตามสูตรต้นตำรับ</p>
+        <span class="card-tag">วัฒนธรรม & เมือง</span>
+        <h3 class="card-title">เมืองเก่าเกียวโต (Japan)</h3>
+        <p class="card-text">เดินชมศาลเจ้าโบราณ ย่านกิอง และเสน่ห์เมืองเก่าที่ได้รับการอนุรักษ์ไว้อย่างดี</p>
       </div>
     </div>
 
@@ -220,15 +231,15 @@
 
   <!-- 3. JavaScript Section -->
   <script>
-    function filterGallery(category) {
-      // 1. จัดการเปลี่ยนสถานะ Active ของปุ่มกด
+    function filterGallery(category, evt) {
+      // 1. เปลี่ยนสถานะ Active ของปุ่มกด
       const buttons = document.querySelectorAll('.btn');
       buttons.forEach(btn => {
         btn.classList.remove('active');
       });
-      event.target.classList.add('active');
+      evt.target.classList.add('active');
 
-      // 2. ซ่อน/แสดง การ์ดตามหมวดหมู่ที่เลือก
+      // 2. ซ่อน/แสดง การ์ดตามหมวดหมู่สถานที่ท่องเที่ยว
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
         if (category === 'all') {
