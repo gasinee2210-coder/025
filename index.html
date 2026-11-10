@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esports & Gaming Gallery</title>
+  <title>Music Recommendation Gallery</title>
   <style>
     /* Reset & Base Styles */
     * {
@@ -28,7 +28,7 @@
 
     header h1 {
       font-size: 2.5rem;
-      color: #38bdf8;
+      color: #a855f7;
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -50,9 +50,9 @@
 
     .btn {
       padding: 10px 24px;
-      border: 2px solid #38bdf8;
+      border: 2px solid #a855f7;
       background-color: transparent;
-      color: #38bdf8;
+      color: #a855f7;
       font-size: 1rem;
       font-weight: bold;
       border-radius: 25px;
@@ -62,10 +62,10 @@
 
     /* CSS Hover Effect for Buttons */
     .btn:hover, .btn.active {
-      background-color: #38bdf8;
-      color: #0f172a;
+      background-color: #a855f7;
+      color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
     }
 
     /* 2. Gallery & CSS Grid */
@@ -84,19 +84,19 @@
       overflow: hidden;
       border: 1px solid #334155;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     /* CSS Hover Effect for Cards */
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(56, 189, 248, 0.2);
-      border-color: #38bdf8;
+      box-shadow: 0 12px 25px rgba(168, 85, 247, 0.25);
+      border-color: #a855f7;
     }
 
     .card img {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: cover;
       display: block;
     }
@@ -115,19 +115,26 @@
       margin-bottom: 10px;
     }
 
-    /* Tag Colors per Game */
-    .freefire .card-tag { background-color: rgba(249, 115, 22, 0.2); color: #f97316; }
-    .pubg .card-tag { background-color: rgba(234, 179, 8, 0.2); color: #eab308; }
-    .valorant .card-tag { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    /* Genre Tag Colors */
+    .pop .card-tag { background-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
+    .rock .card-tag { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .hiphop .card-tag { background-color: rgba(234, 179, 8, 0.2); color: #eab308; }
 
     .card-title {
       font-size: 1.25rem;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       color: #f1f5f9;
     }
 
-    .card-text {
+    .card-artist {
       font-size: 0.95rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
       color: #94a3b8;
     }
 
@@ -152,108 +159,21 @@
 
   <!-- 1. Header Section -->
   <header>
-    <h1>GAME GALLERY</h1>
-    <p>รวบรวมปกเกมและอาร์ตเวิร์กหลักจาก Free Fire, PUBG และ Valorant</p>
+    <h1>MY MUSIC PLAYLIST</h1>
+    <p>รวมเพลงโปรดน่าฟัง แนะนำตามแนวเพลง Pop, Rock และ Hip-Hop</p>
   </header>
 
   <!-- Filter Buttons (3 หมวดหมู่ + ปุ่ม "ทั้งหมด") -->
   <div class="filter-container">
     <button class="btn active" onclick="filterGallery('all', event)">ทั้งหมด</button>
-    <button class="btn" onclick="filterGallery('freefire', event)">Free Fire</button>
-    <button class="btn" onclick="filterGallery('pubg', event)">PUBG</button>
-    <button class="btn" onclick="filterGallery('valorant', event)">Valorant</button>
+    <button class="btn" onclick="filterGallery('pop', event)">Pop</button>
+    <button class="btn" onclick="filterGallery('rock', event)">Rock</button>
+    <button class="btn" onclick="filterGallery('hiphop', event)">Hip-Hop</button>
   </div>
 
   <!-- Gallery Section (6 การ์ดข้อมูล) -->
   <main class="gallery">
 
-    <!-- Card 1: Free Fire Cover -->
-    <div class="card freefire">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2044.webp" alt="Garena Free Fire Cover">
-      <div class="card-body">
-        <span class="card-tag">Free Fire</span>
-        <h3 class="card-title">Garena Free Fire</h3>
-        <p class="card-text">ภาพปกหลักเกมการต่อสู้ Battle Royale ยอดฮิตอันดับ 1 บนมือถือ</p>
-      </div>
-    </div>
-
-    <!-- Card 2: PUBG Cover -->
-    <div class="card pubg">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co1r7f.webp" alt="PUBG Battlegrounds Cover">
-      <div class="card-body">
-        <span class="card-tag">PUBG</span>
-        <h3 class="card-title">PUBG: BATTLEGROUNDS</h3>
-        <p class="card-text">ภาพปกสมรภูมิรบระดับตำนาน ต้นแบบเกมยิงแนวเอาชีวิตรอดสุดสมจริง</p>
-      </div>
-    </div>
-
-    <!-- Card 3: Valorant Cover -->
-    <div class="card valorant">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2m75.webp" alt="Valorant Official Artwork">
-      <div class="card-body">
-        <span class="card-tag">Valorant</span>
-        <h3 class="card-title">VALORANT</h3>
-        <p class="card-text">ภาพอาร์ตเวิร์กหลักรวมเหล่าเอเจนต์จาก Riot Games</p>
-      </div>
-    </div>
-
-    <!-- Card 4: Free Fire Squad -->
-    <div class="card freefire">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2043.webp" alt="Free Fire Max Cover">
-      <div class="card-body">
-        <span class="card-tag">Free Fire</span>
-        <h3 class="card-title">Free Fire MAX</h3>
-        <p class="card-text">โปสเตอร์เวอร์ชันอัปเกรดกราฟิกระดับ HD และเอฟเฟกต์สุดอลังการ</p>
-      </div>
-    </div>
-
-    <!-- Card 5: PUBG Mobile -->
-    <div class="card pubg">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2i0q.webp" alt="PUBG Mobile Poster">
-      <div class="card-body">
-        <span class="card-tag">PUBG</span>
-        <h3 class="card-title">PUBG MOBILE</h3>
-        <p class="card-text">ปกเกมเวอร์ชันมือถือ พร้อมสัมผัสประสบการณ์ยิงดุเดือดได้ทุกที่</p>
-      </div>
-    </div>
-
-    <!-- Card 6: Valorant Agents -->
-    <div class="card valorant">
-      <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2634.webp" alt="Valorant Key Art">
-      <div class="card-body">
-        <span class="card-tag">Valorant</span>
-        <h3 class="card-title">Valorant Key Art</h3>
-        <p class="card-text">ภาพ Key Art ประจำซีซัน การต่อสู้ด้วยยุทธวิธี 5v5 สุดมันส์</p>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- 3. JavaScript Section -->
-  <script>
-    function filterGallery(category, evt) {
-      // 1. เปลี่ยนสถานะ Active ของปุ่มกด
-      const buttons = document.querySelectorAll('.btn');
-      buttons.forEach(btn => {
-        btn.classList.remove('active');
-      });
-      evt.target.classList.add('active');
-
-      // 2. ซ่อน/แสดง การ์ดตามหมวดหมู่เกม
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        if (category === 'all') {
-          card.classList.remove('hide');
-        } else {
-          if (card.classList.contains(category)) {
-            card.classList.remove('hide');
-          } else {
-            card.classList.add('hide');
-          }
-        }
-      });
-    }
-  </script>
-
-</body>
-</html>
+    <!-- Card 1: Pop -->
+    <div class="card pop">
+      <img src="
