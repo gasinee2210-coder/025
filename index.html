@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Recommendation Gallery</title>
+  <title>Animal World Gallery</title>
   <style>
     /* Reset & Base Styles */
     * {
@@ -28,7 +28,7 @@
 
     header h1 {
       font-size: 2.5rem;
-      color: #a855f7;
+      color: #22c55e;
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -50,9 +50,9 @@
 
     .btn {
       padding: 10px 24px;
-      border: 2px solid #a855f7;
+      border: 2px solid #22c55e;
       background-color: transparent;
-      color: #a855f7;
+      color: #22c55e;
       font-size: 1rem;
       font-weight: bold;
       border-radius: 25px;
@@ -62,10 +62,10 @@
 
     /* CSS Hover Effect for Buttons */
     .btn:hover, .btn.active {
-      background-color: #a855f7;
-      color: #ffffff;
+      background-color: #22c55e;
+      color: #0f172a;
       transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
     }
 
     /* 2. Gallery & CSS Grid */
@@ -90,8 +90,8 @@
     /* CSS Hover Effect for Cards */
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(168, 85, 247, 0.25);
-      border-color: #a855f7;
+      box-shadow: 0 12px 25px rgba(34, 197, 94, 0.25);
+      border-color: #22c55e;
     }
 
     .card img {
@@ -115,65 +115,7 @@
       margin-bottom: 10px;
     }
 
-    /* Genre Tag Colors */
-    .pop .card-tag { background-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
-    .rock .card-tag { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
-    .hiphop .card-tag { background-color: rgba(234, 179, 8, 0.2); color: #eab308; }
-
-    .card-title {
-      font-size: 1.25rem;
-      margin-bottom: 4px;
-      color: #f1f5f9;
-    }
-
-    .card-artist {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #cbd5e1;
-      margin-bottom: 8px;
-    }
-
-    .card-text {
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
-
-    /* JS Filter Hide Class */
-    .hide {
-      display: none;
-    }
-
-    /* Responsive adjustments for small devices */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 1. Header Section -->
-  <header>
-    <h1>MY MUSIC PLAYLIST</h1>
-    <p>รวมเพลงโปรดน่าฟัง แนะนำตามแนวเพลง Pop, Rock และ Hip-Hop</p>
-  </header>
-
-  <!-- Filter Buttons (3 หมวดหมู่ + ปุ่ม "ทั้งหมด") -->
-  <div class="filter-container">
-    <button class="btn active" onclick="filterGallery('all', event)">ทั้งหมด</button>
-    <button class="btn" onclick="filterGallery('pop', event)">Pop</button>
-    <button class="btn" onclick="filterGallery('rock', event)">Rock</button>
-    <button class="btn" onclick="filterGallery('hiphop', event)">Hip-Hop</button>
-  </div>
-
-  <!-- Gallery Section (6 การ์ดข้อมูล) -->
-  <main class="gallery">
-
-    <!-- Card 1: Pop -->
-    <div class="card pop">
-      <img src="
+    /* Tag Colors per Category */
+    .carnivore .card-tag { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
+    .herbivore .card-tag { background-color: rgba(34, 197, 94, 0.2); color: #22c55e; }
+    .omnivore .card-tag { background-color
