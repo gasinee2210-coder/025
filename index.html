@@ -118,4 +118,142 @@
     /* Tag Colors per Category */
     .carnivore .card-tag { background-color: rgba(239, 68, 68, 0.2); color: #ef4444; }
     .herbivore .card-tag { background-color: rgba(34, 197, 94, 0.2); color: #22c55e; }
-    .omnivore .card-tag { background-color
+    .omnivore .card-tag { background-color: rgba(234, 179, 8, 0.2); color: #eab308; }
+
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: #f1f5f9;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    /* JS Filter Hide Class */
+    .hide {
+      display: none;
+    }
+
+    /* Responsive adjustments for small devices */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header Section -->
+  <header>
+    <h1>WILDLIFE GALLERY</h1>
+    <p>สำรวจโลกของสัตว์ป่า เรียนรู้พฤติกรรม และจำแนกตามประเภทอาหารที่กิน</p>
+  </header>
+
+  <!-- Filter Buttons (3 หมวดหมู่ + ปุ่ม "ทั้งหมด") -->
+  <div class="filter-container">
+    <button class="btn active" onclick="filterGallery('all', event)">ทั้งหมด</button>
+    <button class="btn" onclick="filterGallery('carnivore', event)">สัตว์กินเนื้อ</button>
+    <button class="btn" onclick="filterGallery('herbivore', event)">สัตว์กินพืช</button>
+    <button class="btn" onclick="filterGallery('omnivore', event)">สัตว์กินพืชและเนื้อ</button>
+  </div>
+
+  <!-- Gallery Section (6 การ์ดข้อมูล) -->
+  <main class="gallery">
+
+    <!-- Card 1: สิงโต (Carnivore) -->
+    <div class="card carnivore">
+      <img src="https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?auto=format&fit=crop&w=600&q=80" alt="สิงโต">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินเนื้อ</span>
+        <h3 class="card-title">สิงโต (Lion)</h3>
+        <p class="card-text">เจ้าแห่งทุ่งหญ้า อาศัยอยู่รวมกันเป็นฝูง มีทักษะการล่าเป็นทีมและคำรามอันทรงพลัง</p>
+      </div>
+    </div>
+
+    <!-- Card 2: เสือ (Carnivore) -->
+    <div class="card carnivore">
+      <img src="https://images.unsplash.com/photo-1561731216-c3a4d99437d5?auto=format&fit=crop&w=600&q=80" alt="เสือ">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินเนื้อ</span>
+        <h3 class="card-title">เสือโคร่ง (Tiger)</h3>
+        <p class="card-text">นักล่าเดี่ยวที่มีลวดลายกลมกลืนกับป่า ชอบน้ำและเป็นนักว่ายน้ำที่เก่งกาจ</p>
+      </div>
+    </div>
+
+    <!-- Card 3: ม้าลาย (Herbivore) -->
+    <div class="card herbivore">
+      <img src="https://images.unsplash.com/photo-1501705388883-4ed8a543392c?auto=format&fit=crop&w=600&q=80" alt="ม้าลาย">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินพืช</span>
+        <h3 class="card-title">ม้าลาย (Zebra)</h3>
+        <p class="card-text">สัตว์โดดเด่นด้วยลายแถบขาวดำที่ไม่เหมือนใคร ช่วยพรางตัวจากนักล่ากลางทุ่งหญ้า</p>
+      </div>
+    </div>
+
+    <!-- Card 4: หมูป่า (Omnivore) -->
+    <div class="card omnivore">
+      <img src="https://images.unsplash.com/photo-1589656966895-2f33e7653819?auto=format&fit=crop&w=600&q=80" alt="หมูป่า">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินพืชและเนื้อ</span>
+        <h3 class="card-title">หมูป่า (Wild Boar)</h3>
+        <p class="card-text">สัตว์ป่าความอดทนสูง ใช้เขี้ยวขุดหาพืช รากไม้ แมลง และสัตว์เล็กเป็นอาหาร</p>
+      </div>
+    </div>
+
+    <!-- Card 5: กระรอก (Omnivore / Herbivore Focus) -->
+    <div class="card omnivore">
+      <img src="https://images.unsplash.com/photo-1504006833117-8886a355efbf?auto=format&fit=crop&w=600&q=80" alt="กระรอก">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินพืชและเนื้อ</span>
+        <h3 class="card-title">กระรอก (Squirrel)</h3>
+        <p class="card-text">สัตว์ตัวเล็กแคล่วคล่องว่องไว ชอบกินถั่ว เมล็ดพืช ผลไม้ และแมลงขนาดเล็ก</p>
+      </div>
+    </div>
+
+    <!-- Card 6: ม้าลายฝูง (Herbivore) -->
+    <div class="card herbivore">
+      <img src="https://images.unsplash.com/photo-1526095179574-86e545848c30?auto=format&fit=crop&w=600&q=80" alt="ฝูงม้าลาย">
+      <div class="card-body">
+        <span class="card-tag">สัตว์กินพืช</span>
+        <h3 class="card-title">ฝูงม้าลายอพยพ</h3>
+        <p class="card-text">ม้าลายจะเดินทางอพยพเป็นฝูงใหญ่ร่วมกับละมั่งเพื่อหาแหล่งน้ำและทุ่งหญ้าอุดมสมบูรณ์</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 3. JavaScript Section -->
+  <script>
+    function filterGallery(category, evt) {
+      // 1. เปลี่ยนสถานะ Active ของปุ่มกด
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+      evt.target.classList.add('active');
+
+      // 2. ซ่อน/แสดง การ์ดตามหมวดหมู่ประเภทสัตว์
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.classList.remove('hide');
+        } else {
+          if (card.classList.contains(category)) {
+            card.classList.remove('hide');
+          } else {
+            card.classList.add('hide');
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
